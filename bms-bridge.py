@@ -13,7 +13,7 @@ def main():
     print("-------- bms bridge is starting up --------")
     parser = ArgumentParser(description='bms bridge')
     parser.add_argument('--session', action="store_true", help="Use session bus", default=False)
-    parser.add_argument('--interval', type=int, help="Update MPPT this often, default 30 seconds", default=30)
+    parser.add_argument('--interval', type=int, help="Update MPPT this often, default 5 seconds", default=5)
     args = parser.parse_args()
 
     if args.session:
