@@ -21,14 +21,10 @@ def main():
     else:
         bus = dbus.SystemBus()
 
-    # Find all solar chargers
-    solarchargers = find_services(bus, 'com.victronenergy.solarcharger.')
-
-    if not len(solarchargers):
-        print >>sys.stderr, "No Solar Chargers found"
-        sys.exit(2)
-
     while True: # or an exception kicks us out
+        # Find all solar chargers
+        solarchargers = find_services(bus, 'com.victronenergy.solarcharger.')
+
         charge = bool(bus.get_object('com.victronenergy.battery.bmz',
             "/Info/MaxChargeCurrent").get_dbus_method('GetValue',
             "com.victronenergy.BusItem")())
