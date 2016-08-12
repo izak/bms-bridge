@@ -32,6 +32,9 @@ def main():
         charge = bool(bus.get_object('com.victronenergy.battery.bmz',
             "/Info/MaxChargeCurrent").get_dbus_method('GetValue',
             "com.victronenergy.BusItem")())
+
+        print("updating {} solarchargers. Charge is {}".format(len(solarchargers), charge))
+
         for s in solarchargers:
             ping = lambda: bus.get_object(s, '/Link/NetworkMode').get_dbus_method(
                 'SetValue', 'com.victronenergy.BusItem')(9)
