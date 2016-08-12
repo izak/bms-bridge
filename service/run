@@ -1,3 +1,3 @@
 #!/bin/sh
 exec 2>&1
-exec /usr/bin/python /opt/bmz-bridge/bmz_bridge.py --system
+exec /usr/bin/python /opt/color-control/bms-bridge/bms-bridge.py --system
