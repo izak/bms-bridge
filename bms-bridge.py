@@ -25,6 +25,11 @@ def main():
         # Find all solar chargers
         solarchargers = find_services(bus, 'com.victronenergy.solarcharger.')
 
+        # When com.victronenergy.battery.bmz service is not available, for
+        # whichever reason, the script will crash and relies on daemontools to 
+        # restart it. Result is that the solar charger will automatically stop 
+        # charging since it doesn't receive the pings anymore. And it will raise
+        # error 67: Missing the BMS. 
         charge = bool(bus.get_object('com.victronenergy.battery.bmz',
             "/Info/MaxChargeCurrent").get_dbus_method('GetValue',
             "com.victronenergy.BusItem")())
