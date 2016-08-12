@@ -28,11 +28,6 @@ def main():
         print >>sys.stderr, "No Solar Chargers found"
         sys.exit(2)
 
-    # First check that all solar chargers know we have a BMS present
-    for s in solarchargers:
-        service = bus.get_object(s, '/Settings/BmsPresent')
-        assert service.get_dbus_method('GetValue', 'com.victronenergy.BusItem')() == 1
-
     while True: # or an exception kicks us out
         charge = bool(bus.get_object('com.victronenergy.battery.bmz',
             "/Info/MaxChargeCurrent").get_dbus_method('GetValue',
