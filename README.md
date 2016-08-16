@@ -30,9 +30,9 @@ which is the command prompt waiting for you to give it a command.
 3) cut and paste these commands into the commandline:
 ```
 cd /opt/color-control
-wget https://github.com/mpvader/bms-bridge/archive/v1.0.tar.gz
-tar -xzvf ./v1.0.tar.gz
-mv ./bms-bridge-1.0 ./bms-bridge
+wget https://github.com/mpvader/bms-bridge/archive/v1.1.tar.gz
+tar -xzvf ./v1.1.tar.gz
+mv ./bms-bridge-1.1 ./bms-bridge
 ln -s /opt/color-control/bms-bridge/service /service/bms-bridge
 ```
 
@@ -42,9 +42,9 @@ one last time to execute the ln command.
 What it does is, line by line:
 ```
 rm: change directory
-wget: download the version 1.0 of the script
+wget: download the version 1.1 of the script
 tar: unzip it
-mv: move it from /opt/color-control/bms-bridge-1.0 into /opt/color-control/bms-bridge
+mv: move it from /opt/color-control/bms-bridge-1.1 into /opt/color-control/bms-bridge
 ln: add the service directory to the list of monitored and auto-started services.
 ```
 
