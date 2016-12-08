@@ -8,7 +8,7 @@ make it work for VE.Can MPPTs as well, since it is just an on/off
 function and we could use the /Mode switch for that.
 
 Make sure to:
-- have CCGX running at v1.70
+- have CCGX running at v1.73 (or greater)
 - disable auto-update in CCGX, to prevent overwriting this custom work
 - run the VE.Direct MPPT (one or multiple, all works) at v1.19
 
@@ -30,9 +30,9 @@ which is the command prompt waiting for you to give it a command.
 3) cut and paste these commands into the commandline:
 ```
 cd /opt/color-control
-wget https://github.com/mpvader/bms-bridge/archive/v1.2.tar.gz
-tar -xzvf ./v1.2.tar.gz
-mv ./bms-bridge-1.2 ./bms-bridge
+wget https://github.com/mpvader/bms-bridge/archive/v1.3.tar.gz
+tar -xzvf ./v1.3.tar.gz
+mv ./bms-bridge-1.3 ./bms-bridge
 ln -s /opt/color-control/bms-bridge/service /service/bms-bridge
 ```
 
@@ -42,9 +42,9 @@ one last time to execute the ln command.
 What it does is, line by line:
 ```
 rm: change directory
-wget: download the version 1.2 of the script
+wget: download the version 1.3 of the script
 tar: unzip it
-mv: move it from /opt/color-control/bms-bridge-1.2 into /opt/color-control/bms-bridge
+mv: move it from /opt/color-control/bms-bridge-1.3 into /opt/color-control/bms-bridge
 ln: add the service directory to the list of monitored and auto-started services.
 ```
 
