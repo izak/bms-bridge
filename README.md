@@ -1,18 +1,21 @@
-# BMS to VE-Direct bridge
+# BMS bridge
 
-This reads `/Info/MaxChargeCurrent` from the BMS and disables the charge
-controllers if that value becomes zero.
+This reads `/Info/MaxChargeCurrent` and `/Info/MaxDischargeCurrent` from
+the BMS and:
+- disables charge controllers if MaxChargeCurrent becomes zero.
+- sets and Multis/Quattros to Charger-only if MaxDischargeCurrent becomes
+zero.
 
-Works only for VE.Direct MPPTs at the moment. It might be possible to
-make it work for VE.Can MPPTs as well, since it is just an on/off 
-function and we could use the /Mode switch for that.
+Disabling charge controllers works only for VE.Direct MPPTs at the moment.
+It might be possible to make it work for VE.Can MPPTs as well, since it is
+just an on/off function and we could use the /Mode switch for that.
 
 Make sure to:
 - have CCGX running at v1.73 (or greater)
 - disable auto-update in CCGX, to prevent overwriting this custom work
 - run the VE.Direct MPPT (one or multiple, all works) at v1.19
 
-Checks to verify operation:
+Checks to verify operation of solar charger control:
 - The BmsPresent setting in the VE.Direct MPPTs should auto-change to Yes
 - Unplugging the BMS from the CCGX should result in error 67 on the MPPT(s)
 - Replugging back in should result in error disappearing, without requiring
