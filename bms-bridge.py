@@ -12,6 +12,7 @@ def find_services(bus, prefix):
 def main():
     print("-------- bms bridge is starting up --------")
     parser = ArgumentParser(description='bms bridge')
+    parser.add_argument('--bms', help="DBUS service name for the BMS", default="com.victronenergy.battery.socketcan_can0")
     parser.add_argument('--session', action="store_true", help="Use session bus", default=False)
     parser.add_argument('--interval', type=int, help="Update MPPT this often, default 5 seconds", default=5)
     args = parser.parse_args()
@@ -25,12 +26,12 @@ def main():
         # Find all solar chargers
         solarchargers = find_services(bus, 'com.victronenergy.solarcharger.')
 
-        # When com.victronenergy.battery.bmz service is not available, for
-        # whichever reason, the script will crash and relies on daemontools to 
-        # restart it. Result is that the solar charger will automatically stop 
-        # charging since it doesn't receive the pings anymore. And it will raise
-        # error 67: Missing the BMS. 
-        charge = bool(bus.get_object('com.victronenergy.battery.bmz',
+        # When bms service is not available, for whatever reason, the script
+        # will crash and rely on daemontools to restart it. Result is that
+        # the solar charger will automatically stop charging since it doesn't
+        # receive the pings anymore. And it will raise error 67: Missing the
+        # BMS. 
+        charge = bool(bus.get_object(args.bms,
             "/Info/MaxChargeCurrent").get_dbus_method('GetValue',
             "com.victronenergy.BusItem")())
 
