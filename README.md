@@ -33,7 +33,7 @@ which is the command prompt waiting for you to give it a command.
 3) cut and paste these commands into the commandline:
 ```
 cd /opt/color-control
-wget https://github.com/mpvader/bms-bridge/archive/v1.3.tar.gz
+wget https://github.com/izak/bms-bridge/archive/v1.3.tar.gz
 tar -xzvf ./v1.3.tar.gz
 mv ./bms-bridge-1.3 ./bms-bridge
 ln -s /opt/color-control/bms-bridge/service /service/bms-bridge
